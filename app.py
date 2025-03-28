@@ -15,7 +15,7 @@ def main():
 
 
     st.subheader("Filter by County")
-    # Assumes there is a 'County' column in the dataset.
+
     counties = df['County'].unique()
     selected_county = st.selectbox("Select a County:", sorted(counties))
     
@@ -25,9 +25,7 @@ def main():
     # Display the DataFrame with a fixed width and height of 800x200 pixels
     st.dataframe(county_df, width=800, height=200)
 
-    # ------------------------------
-    # Slider: Select Median Household Income Range
-    # ------------------------------
+
     st.subheader("Filter by Median Household Income")
     min_income = int(df['Median household income'].min())
     max_income = int(df['Median household income'].max())
@@ -48,12 +46,9 @@ def main():
     st.markdown("**Cities/Towns with Median Household Income in Selected Range:**")
     st.dataframe(income_filtered_df, width=800, height=200)
 
-    # ------------------------------
-    # Bonus: Bar Graph of Highest and Lowest 5 Median Household Incomes
-    # ------------------------------
+
     st.subheader("Bar Graph: Top 5 Highest & Lowest Median Household Incomes")
-    # Assumes there's a 'City/Town' column for the names.
-    # If the column name is different (e.g., "City" or "Town"), adjust accordingly.
+
     lowest5 = df.nsmallest(5, 'Median household income')
     highest5 = df.nlargest(5, 'Median household income')
     combined = pd.concat([lowest5, highest5]).sort_values('Median household income')
