@@ -22,7 +22,7 @@ def main():
     county_df = df[df['County'] == selected_county]
     
     st.markdown("**Cities/Towns in Selected County:**")
-    # Display the DataFrame with a fixed width and height of 800x200 pixels
+
     st.dataframe(county_df, width=800, height=200)
 
 
@@ -55,7 +55,7 @@ def main():
 
     fig = px.bar(
         combined,
-        x="City/Town",  # Adjust column name if needed
+        x="City/Town",  
         y="Median household income",
         color="County",
         title="5 Cities with Lowest and 5 with Highest Median Household Income"
